@@ -1,12 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const pageTitle = "私について"
+
+const identity = {
+  firstName: "サラ",
+  country: "カナダ",
+  occupation: "技術ライター",
+  hobbies: ["写真", "バードウォッチング", "野球"],
+};
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "ドキュメントの執筆"];
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<h1>私について</h1>
+	<title>{pageTitle}</title>
+	<h1>{pageTitle}</h1>
 	<h2>... そして私の新しいAstroサイトについて！</h2>
   
 	<p>私はAstroの入門チュートリアルを進めています。これは私のウェブサイトの2番目のページで、自分で作った初めてのページです！</p>
@@ -17,4 +27,19 @@ import Layout from '../layouts/Layout.astro';
 		<li><a href="/posts/post-2/">記事2</a></li>
 		<li><a href="/posts/post-3/">記事3</a></li>
 	</ul>
+
+	<p>以下は私に関するいくつかの事実です。</p>
+	<ul>
+	  <li>私の名前は{identity.firstName}です。</li>
+	  <li>{identity.country}に住んでおり、{identity.occupation}として働いています。</li>
+	  {identity.hobbies.length >= 2 &&
+		<li>私の2つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。</li>
+	  }
+	</ul>
+	<p>私のスキルは以下の通りです。</p>
+	<ul>
+	  {skills.map((skill) => <li>{skill}</li>)}
+	</ul>
+
+
 </Layout>
